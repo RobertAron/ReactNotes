@@ -1,14 +1,13 @@
 # Actions
 
+Most of this boilerplate can be skipped by using [other packages.](https://www.npmjs.com/package/redux-actions)
+
 1. Constants
 
 `src/constants/index.tsx`
 ```typescript
-export const ADD_FIRST_NAME = 'ADD_FIRST_NAME'
-export type ADD_FIRST_NAME = typeof ADD_FIRST_NAME
-
-export const ADD_LAST_NAME = 'ADD_LAST_NAME'
-export type ADD_LAST_NAME = typeof ADD_LAST_NAME
+export const ADD_NAME = 'ADD_NAME'
+export type ADD_NAME = typeof ADD_NAME
 
 export const ADD_CITY = 'ADD_CITY'
 export type ADD_CITY = typeof ADD_CITY
@@ -16,19 +15,15 @@ export type ADD_CITY = typeof ADD_CITY
 
 2. Actions
 
-These function as pseudo  constructors
+These function as pseudo constructors
 
 `src/actions/index.tsx`
 ```typescript
 import * as constants from '../constants'
 
-export interface AddFirstName {
-    type: constants.ADD_FIRST_NAME,
-    fName: String
-}
-export interface AddLastName {
-    type: constants.ADD_LAST_NAME,
-    lName: String
+export interface AddName {
+    type: constants.ADD_NAME,
+    name: String
 }
 
 export interface AddCity {
@@ -37,19 +32,12 @@ export interface AddCity {
     zip: Int
 }
 
-export type NameAction = AddFirstName | AddLastName;
+export type AddActions = AddName | AddCity;
 
-export function addFirstName(fName:String): AddFirstName {
+export function addtName(name:String): AddName {
     return {
-        type: constants.ADD_FIRST_NAME,
-        fName
-    }
-}
-
-export function addLastName(lName:String): AddLastName {
-    return {
-        type: constants.ADD_LAST_NAME,
-        lName
+        type: constants.ADD_NAME,
+        name
     }
 }
 
