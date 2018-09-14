@@ -28,11 +28,10 @@ export interface AddName {
 
 export interface AddCity {
     type: constants.ADD_CITY,
-    name: String,
-    zip: Int
+    name: String
 }
 
-export type AddActions = AddName | AddCity;
+export type AddAction = AddName | AddCity;
 
 export function addtName(name:String): AddName {
     return {
@@ -41,11 +40,10 @@ export function addtName(name:String): AddName {
     }
 }
 
-export function addCity(name:String,zip:Int) {
+export function addCity(name:String) {
     return{
         type: constants.ADD_CITY,
         name
-        zip
     }
 }
 ```

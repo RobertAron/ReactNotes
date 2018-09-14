@@ -17,3 +17,7 @@ npm install -S redux react-redux @types/react-redux
 ```Shell
 npm install --save redux-actions
 ```
+
+#### Immutable Tools
+
+[`immutable`](https://github.com/facebook/immutable-js)

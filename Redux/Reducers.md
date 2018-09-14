@@ -4,17 +4,17 @@
 
 
 ```typescript
-import { EnthusiasmAction } from '../actions';
-import { StoreState } from '../types/index';
-import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from '../constants/index';
+import { AddAction, AddName, AddCity } from '../actions'
+import { StoreState } from '../types/index'
+import { ADD_NAME, ADD_CITY } from '../constants/index'
 
-export function enthusiasm(state: StoreState, action: EnthusiasmAction): StoreState {
+export function peoplePlaces(state: StoreState, action: AddAction): StoreState {
   switch (action.type) {
-    case INCREMENT_ENTHUSIASM:
-      return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 };
-    case DECREMENT_ENTHUSIASM:
-      return { ...state, enthusiasmLevel: Math.max(1, state.enthusiasmLevel - 1) };
+    case ADD_NAME:
+      return { ...state, names: state.names.slice().push(action.name) }
+    case ADD_CITY:
+      return { ...state, citys: state.citys.slice().push(action.name) }
   }
-  return state;
+  return state
 }
 ```
