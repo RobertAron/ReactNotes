@@ -1,7 +1,7 @@
 # Container
 
 Setup component to accept the incoming functions/props
-`myComponent.tsx`
+`./components/ExampleComponent.tsx`
 ```typescript 
 export interface Props {
   citys: string[]
@@ -10,19 +10,28 @@ export interface Props {
   addCity?: () => void
 }
 ```
+Create container, which will push props to the component.
 
 ```typescript
-export function mapStateToProps({ names, places }: StoreState) {
+import ExampleComponent from '../components/ExampleComponent'
+import * as actions from '../actions/'
+import { StoreState } from '../types/index'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+
+export function mapStateToProps({ names,cities  }: StoreState) {
   return {
-    places,
     names,
+    cities
   }
 }
-// TODO FIX THIS IT ISN'T RIGHT
+
 export function mapDispatchToProps(dispatch: Dispatch<actions.AddAction>) {
   return {
-    onIncrement: () => dispatch(actions.incrementEnthusiasm()),
-    onDecrement: () => dispatch(actions.decrementEnthusiasm()),
+    addCity: (newCity:string) => dispatch(actions.addCity(newCity)),
+    addName: (newName:string) => dispatch(actions.addName(newName)),
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExampleComponent)
 ```

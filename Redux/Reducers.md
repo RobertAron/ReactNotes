@@ -4,16 +4,20 @@
 
 
 ```typescript
-import { AddAction, AddName, AddCity } from '../actions'
+import { AddAction } from '../actions'
 import { StoreState } from '../types/index'
 import { ADD_NAME, ADD_CITY } from '../constants/index'
 
 export function peoplePlaces(state: StoreState, action: AddAction): StoreState {
   switch (action.type) {
     case ADD_NAME:
-      return { ...state, names: state.names.slice().push(action.name) }
+      const newnames = state.names.slice()
+      newnames.push(action.name)
+      return { ...state, names: newnames }
     case ADD_CITY:
-      return { ...state, citys: state.citys.slice().push(action.name) }
+      const newCities = state.cities.slice()
+      newCities.push(action.name)
+      return { ...state, cities: newCities }
   }
   return state
 }

@@ -21,26 +21,27 @@ These function as pseudo constructors
 ```typescript
 import * as constants from '../constants'
 
+export type AddAction = AddName | AddCity
+
 export interface AddName {
     type: constants.ADD_NAME,
-    name: String
+    name: string
 }
 
 export interface AddCity {
     type: constants.ADD_CITY,
-    name: String
+    name: string
 }
 
-export type AddAction = AddName | AddCity;
 
-export function addtName(name:String): AddName {
+export function addtName(name:string): AddName {
     return {
         type: constants.ADD_NAME,
         name
     }
 }
 
-export function addCity(name:String) {
+export function addCity(name:string): AddCity {
     return{
         type: constants.ADD_CITY,
         name
